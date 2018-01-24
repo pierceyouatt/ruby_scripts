@@ -49,7 +49,7 @@ Follow the usual setup steps:
     You should see something like
 
     ```
-    Well, hello there, AppDev!
+    "Well, hello there, AppDev!"
     ```
 
   1. The code to make this happen is in `lib/tasks/hello.rake` and read it and try to make out what's what.
@@ -67,13 +67,13 @@ rails bye
 outputs
 
 ```
-See you next time, AppDev!
+"See you next time, AppDev!"
 ```
 
 ### rails todays_date
 
 ```
-rails bye
+rails todays_date
 ```
 
 should output
