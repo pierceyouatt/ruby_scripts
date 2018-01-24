@@ -1,18 +1,10 @@
-desc "Say hello"
-task :hi do
-  ap("Hello!")
-end
-
-
-# Create a task that prints "Goodbye!"
-
-
-desc "Print today's date" do
+desc "Print today's date"
+task :todays_date do
 
 end
 
 desc "Check if today is Friday"
-task :friday do
+task :tgif do
 
 end
 
@@ -26,9 +18,68 @@ task :fortune do
     "Every day in your life is a special occasion"
   ]
 
-  # ==========================================================================
+  # =====================================================================
   # Your code goes below.
-  # ==========================================================================
+  # =====================================================================
+
+end
+
+desc "Print a random quote"
+task :quote do
+  quotations = [
+    {
+      :quote => "Amateurs sit and wait for inspiration, the rest of us just get up and go to work.",
+      :citation => "Stephen King"
+    },
+    {
+      :quote => "Action is the foundational key to all success.",
+      :citation => "Pablo Picasso"
+    },
+    {
+      :quote => "There is no substitute for hard work.",
+      :citation => "Thomas Edison"
+    },
+    {
+      :quote => "Focused, hard work is the real key to success. Keep your eyes on the goal, and just keep taking the next step towards completing it.",
+      :citation => "John Carmack"
+    },
+    {
+      :quote => "It's hard to beat a person who never gives up.",
+      :citation => "Babe Ruth"
+    },
+    {
+      :quote => "The mind is everything. What you think you become.",
+      :citation => "Buddha"
+    },
+    {
+      :quote => "The best time to plant a tree is 20 years ago. The second best time is now.",
+      :citation => "Chinese Proverb"
+    },
+    {
+      :quote => "A person who chases two rabbits catches neither.",
+      :citation => "Confucius"
+    },
+    {
+      :quote => "Inspiration exists, but it has to find you working.",
+      :citation => "Pablo Picasso"
+    },
+    {
+      :quote => "If there is no wind, row.",
+      :citation => "Latin Proverb"
+    },
+    {
+      :quote => "The secret of getting ahead is getting started.",
+      :citation => "Author unknown"
+    },
+    {
+      :quote => "Journey of a thousand miles begins with one step.",
+      :citation => "Lao Tzu"
+    },
+  ]
+
+  # =====================================================================
+  # Your code goes below.
+  # =====================================================================
 
 end
 
@@ -40,7 +91,7 @@ task :play_rock do
 
   # Print the move the computer played
 
-  # Print the result of the game
+  # Print the outcome of the game
 end
 
 desc "Play paper in rock-paper-scissors"
@@ -53,221 +104,186 @@ task :play_scissors do
 
 end
 
-desc "Print the contents of input.txt"
-task :print_input do
-  input = open(Rails.root + 'lib/input_files/input.txt').read
-  ap(input)
+desc "Print the contents of example_input.txt"
+task :example_input_from_file do
+  path_to_file = Rails.root + "lib/input_files/example_input.txt"
+  ap(path_to_file)
+
+  example_input = open(path_to_file).read
+  ap(example_input)
+end
+
+desc "Create a new input file and read from it"
+task :your_own_input_from_file do
+
 end
 
 desc "Calculate word count statistics"
 task :word_count do
-  text = open(Rails.root + 'lib/input_files/word_count_text.txt').read
-  special_word = open(Rails.root + 'lib/input_files/word_count_special_word.txt').read
+  path_to_text = Rails.root + "lib/input_files/word_count_text.txt"
+  text = open(path_to_text).read
 
-  # ==========================================================================
+  path_to_special_word = Rails.root + "lib/input_files/word_count_special_word.txt"
+  special_word = open(path_to_special_word).read
+
+  # =====================================================================
   # Your code goes below.
-  # The text from the file is in the string text.
-  # The special word from the file is in the string special_word.
-  # ==========================================================================
+  # The text from the file is in the variable 'text'.
+  # The special word from the file is in the variable 'special_word'.
+  # =====================================================================
 
-  character_count_with_spaces = ""
 
-  character_count_without_spaces = ""
-
-  occurrences = ""
-
-  ap("Your text")
-  ap("---------")
-  ap(text)
-  ap("")
-  ap("Character count (with spaces): #{character_count_with_spaces}")
-  ap("Character count (without spaces): #{character_count_without_spaces}")
-  ap("Occurrences of '#{special_word}': #{occurrences}")
 end
 
 desc "Calculate monthly loan payments"
 task :loan_payment do
-  apr = open(Rails.root + 'lib/input_files/loan_payment_apr.txt').read.chomp.to_f
-  years = open(Rails.root + 'lib/input_files/loan_payment_years.txt').read.chomp.to_i
-  principal = open(Rails.root + 'lib/input_files/loan_payment_principal.txt').read.chomp.to_f
 
-  # ==========================================================================
-  # Your code goes below.
-  # The annual percentage rate from the file is in the decimal apr.
-  # The number of years from the file is in the integer years.
-  # The principal value from the file is in the decimal principal.
-  # ==========================================================================
-
-  rate = ""
-  nper = ""
-
-  monthly_payment = ""
-
-  ap("APR: #{apr}")
-  ap("Number of Years: #{years}")
-  ap("Principal: $#{principal}")
-  ap("Monthly Payment: $#{monthly_payment.round(2)}")
 end
 
-desc "Sort and count numbers"
-task :sort_and_count do
-  input = open(Rails.root + 'lib/input_files/descriptive_statistics_numbers.txt').read.chomp
-  numbers = input.gsub(',', '').split.map(&:to_f)
+desc "Count and sort numbers"
+task :count_and_sort do
+  path_to_file = Rails.root + "lib/input_files/descriptive_statistics_numbers.txt"
+  string_input = open(path_to_file).read.chomp
+  numbers = string_input.gsub(",", "").split.map(&:to_f)
 
-  # ==========================================================================
+  # =====================================================================
   # Your code goes below.
-  # The numbers from the file are in the array numbers.
-  # ==========================================================================
+  # The numbers from the file are in the array `numbers`.
+  # =====================================================================
 
-  sorted_numbers = ""
-  count = ""
-
-  ap("Your numbers:")
-  ap(numbers)
-  ap("Sorted Numbers:")
-  ap(sorted_numbers)
-  ap("Count: #{count}")
 end
 
 desc "Calculate minimum"
 task :minimum do
-  input = open(Rails.root + 'lib/input_files/descriptive_statistics_numbers.txt').read.chomp
-  numbers = input.gsub(',', '').split.map(&:to_f)
+  path_to_file = Rails.root + "lib/input_files/descriptive_statistics_numbers.txt"
+  input = open(path_to_file).read.chomp
+  numbers = input.gsub(",", "").split.map(&:to_f)
 
-  # ==========================================================================
+  # =====================================================================
   # Your code goes below.
-  # The numbers from the file are in the array numbers.
-  # ==========================================================================
+  # The numbers from the file are in the array `numbers`.
+  # =====================================================================
 
   # MINIMUM
-  # ===
-  # To find the minimum of a set of numbers,
-  #  - we set the minimum to the first item in the set
-  #  - for each number in the set,
-  #    - we check if the current number is smaller than the minimum
-  #      - if so, we set the minimum to the current number
-  #  - after we've looked at every number, the minimum should be accurate
+  # =======
 
-  minimum = ""
+  # Yes, we realize that we could just use .min, but don't; instead, practice using .each to solve this problem.
 
-  ap("Your numbers:")
-  ap("-------------")
-  ap(numbers)
-  ap("Minimum: #{minimum}")
+  # To find the minimum of a list as a human:
+
+  #  - I write down the first item in the list as the minimum (even though it may not be the real one).
+  #  - Next, I go through the rest of the list; for each element,
+  #    - I check if it is smaller than what I previously wrote down as the minimum. If so,
+  #      - I replace the previous min with it.
+  #    - If not, I do nothing and go to the next element.
+  #  - After we've looked at every element, what we're left with should be the real minimum
+
 end
 
 desc "Calculate maximum"
 task :maximum do
-  input = open(Rails.root + 'lib/input_files/descriptive_statistics_numbers.txt').read.chomp
-  numbers = input.gsub(',', '').split.map(&:to_f)
+  path_to_file = Rails.root + "lib/input_files/descriptive_statistics_numbers.txt"
+  input = open(path_to_file).read.chomp
+  numbers = input.gsub(",", "").split.map(&:to_f)
 
-  # ==========================================================================
+  # =====================================================================
   # Your code goes below.
-  # The numbers from the file are in the array numbers.
-  # ==========================================================================
+  # The numbers from the file are in the array `numbers`.
+  # =====================================================================
 
   # MINIMUM
-  # ===
-  # To find the maximum of a set of numbers,
-  #  - we set the maximum to the first item in the set
-  #  - for each number in the set,
-  #    - we check if the current number is larger than the maximum
-  #      - if so, we set the maximum to the current number
-  #  - after we've looked at every number, the maximum should be accurate
+  # =======
 
-  maximum = ""
+  # Yes, we realize that we could just use .max, but don't; instead, practice using .each to solve this problem.
 
-  ap("Your numbers:")
-  ap("-------------")
-  ap(numbers)
-  ap("Maximum: #{maximum}")
+  # To find the maximum of a list as a human:
+
+  #  - I write down the first item in the list as the maximum (even though it may not be the real one).
+  #  - Next, I go through the rest of the list; for each element,
+  #    - I check if it is larger than what I previously wrote down as the maximum. If so,
+  #      - I replace the previous max with it.
+  #    - If not, I do nothing and go to the next element.
+  #  - After we've looked at every element, what we're left with should be the real maximum
+
 end
 
 desc "Calculate range"
 task :range do
-  input = open(Rails.root + 'lib/input_files/descriptive_statistics_numbers.txt').read.chomp
-  numbers = input.gsub(',', '').split.map(&:to_f)
+  path_to_file = Rails.root + "lib/input_files/descriptive_statistics_numbers.txt"
+  input = open(path_to_file).read.chomp
+  numbers = input.gsub(",", "").split.map(&:to_f)
 
-  # ==========================================================================
+  # =====================================================================
   # Your code goes below.
-  # The numbers from the file are in the array numbers.
-  # ==========================================================================
+  # The numbers from the file are in the array `numbers`.
+  # =====================================================================
 
   # RANGE
-  # ===
+  # =====
+
   # To find the range of a set of numbers,
-  #  - subtract the minimum from the maximum
+  #  - Find the maximum
+  #  - Find the minimum
+  #  - Subtract the latter from the former
 
-  range = ""
-
-  ap("Your numbers:")
-  ap("-------------")
-  ap(numbers)
-  ap("Range: #{range}")
 end
 
 desc "Calculate sum"
 task :sum do
-  input = open(Rails.root + 'lib/input_files/descriptive_statistics_numbers.txt').read.chomp
-  numbers = input.gsub(',', '').split.map(&:to_f)
+  path_to_file = Rails.root + "lib/input_files/descriptive_statistics_numbers.txt"
+  input = open(path_to_file).read.chomp
+  numbers = input.gsub(",", "").split.map(&:to_f)
 
-  # ==========================================================================
+  # =====================================================================
   # Your code goes below.
-  # The numbers from the file are in the array numbers.
-  # ==========================================================================
+  # The numbers from the file are in the array `numbers`.
+  # =====================================================================
 
   # SUM
   # ===
+
   # To find the sum of a set of numbers,
   #  - we start with 0
   #  - for each number in the set,
   #    - we add it to the running total
   #  - after we've looked at every number, the running total is the sum
 
-  sum = ""
-
-  ap("Your numbers:")
-  ap("-------------")
-  ap(numbers)
-  ap("Sum: #{sum}")
 end
 
 desc "Calculate mean"
 task :mean do
-  input = open(Rails.root + 'lib/input_files/descriptive_statistics_numbers.txt').read.chomp
-  numbers = input.gsub(',', '').split.map(&:to_f)
+  path_to_file = Rails.root + "lib/input_files/descriptive_statistics_numbers.txt"
+  input = open(path_to_file).read.chomp
+  numbers = input.gsub(",", "").split.map(&:to_f)
 
-  # ==========================================================================
+  # =====================================================================
   # Your code goes below.
-  # The numbers from the file are in the array numbers.
-  # ==========================================================================
+  # The numbers from the file are in the array `numbers`.
+  # =====================================================================
 
   # MEAN
   # ====
-  # To find the mean of a set,
+
+  # To find the mean (or average) of a set,
   #  - we sum up all the elements
   #  - then we divide the sum by the number of elements in the set
 
-  mean = ""
-
-  ap("Your numbers:")
-  ap("-------------")
-  ap(numbers)
-  ap("Mean: #{mean.round(3)}")
 end
 
 desc "Calculate median"
 task :median do
-  input = open(Rails.root + 'lib/input_files/descriptive_statistics_numbers.txt').read.chomp
-  numbers = input.gsub(',', '').split.map(&:to_f)
+  path_to_file = Rails.root + "lib/input_files/descriptive_statistics_numbers.txt"
+  input = open(path_to_file).read.chomp
+  numbers = input.gsub(",", "").split.map(&:to_f)
 
-  # ==========================================================================
+  # =====================================================================
   # Your code goes below.
-  # The numbers from the file are in the array numbers.
-  # ==========================================================================
+  # The numbers from the file are in the array `numbers`.
+  # =====================================================================
 
   # MEDIAN
-  # ===
+  # ======
+
   # To find the median of a set of numbers,
   #  - sort your set
   #  - find the number of items in your sorted set
@@ -278,26 +294,18 @@ task :median do
   #    - find the number to the right of the middle number
   #    - average the left and right numbers and save it as your median
 
-  median = ""
-
-  ap("Your numbers:")
-  ap("-------------")
-  ap(numbers)
-  ap("")
-  ap("Sorted Numbers:")
-  ap(sorted_numbers)
-  ap("Median: #{median}")
 end
 
 desc "Calculate standard deviation"
 task :standard_deviation do
-  input = open(Rails.root + 'lib/input_files/descriptive_statistics_numbers.txt').read.chomp
-  numbers = input.gsub(',', '').split.map(&:to_f)
+  path_to_file = Rails.root + "lib/input_files/descriptive_statistics_numbers.txt"
+  input = open(path_to_file).read.chomp
+  numbers = input.gsub(",", "").split.map(&:to_f)
 
-  # ==========================================================================
+  # =====================================================================
   # Your code goes below.
-  # The numbers from the file are in the array numbers.
-  # ==========================================================================
+  # The numbers from the file are in the array `numbers`.
+  # =====================================================================
 
   # VARIANCE
   # ========
@@ -308,55 +316,34 @@ task :standard_deviation do
   #    - we square the difference
   #  - the variance is the mean of the squared differences
 
-  variance = ""
-
 
   # STANDARD DEVIATION
   # ==================
   # To find the standard deviation of a set,
   #  - take the square root of the variance
-  standard_deviation = ""
 
-  ap("Your numbers:")
-  ap("-------------")
-  ap(numbers)
-  ap("")
-  ap("Standard Deviation: #{standard_deviation}")
 end
 
 desc "Calculate mode"
 task :mode do
-  input = open(Rails.root + 'lib/input_files/descriptive_statistics_numbers.txt').read.chomp
-  numbers = input.gsub(',', '').split.map(&:to_f)
+  path_to_file = Rails.root + "lib/input_files/descriptive_statistics_numbers.txt"
+  input = open(path_to_file).read.chomp
+  numbers = input.gsub(",", "").split.map(&:to_f)
 
-  # ==========================================================================
+  # =====================================================================
   # Your code goes below.
-  # The numbers from the file are in the array numbers.
-  # ==========================================================================
+  # The numbers from the file are in the array `numbers`.
+  # =====================================================================
 
   # MODE
-  # ========
-  # To find the mode of a set of numbers,
-  #  - set a leader to a nil value
-  #  - set the count of the leader to 0
-  #  - for each number in the set
-  #    - count the number of occurrences of the current number in the set
-  #    - if the number of occurences is greater than the leader count
-  #      - set the leader to the current number
-  #      - set the leader count to the number of occurences
-  #  - the eventual leader is your mode
+  # ====
 
-  mode = ""
+  # To find the mode of a set of numbers, I follow an approach similar to the one for minimum and maximum above.
 
-  ap("Your numbers:")
-  ap("-------------")
-  ap(numbers)
-  ap("")
-  ap("Mode: #{mode}")
 end
 
-desc "Import movies into a CSV file"
-task import_movies: :environment do
+desc "Scrape IMDb Coming Soon"
+task scrape_movies: :environment do
   # url = "http://www.imdb.com/movies-coming-soon/"
   # page = HTTParty.get(url)
 
