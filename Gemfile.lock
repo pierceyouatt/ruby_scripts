@@ -24,10 +24,10 @@ GIT
       rails
 
 GIT
-  remote: https://github.com/firstdraft/firstdraft_generators.git
-  revision: 9405e70b3d5bf2215917c7d268baa07ab76386fd
+  remote: https://github.com/firstdraft/draft_generators.git
+  revision: c48197e6753c25777ae19ca99f43eaf2c0e4c3ee
   specs:
-    firstdraft_generators (0.0.3)
+    draft_generators (0.0.3)
 
 GIT
   remote: https://github.com/firstdraft/grade_runner.git
@@ -381,8 +381,8 @@ DEPENDENCIES
   dev_toolbar!
   devise!
   dotenv-rails
+  draft_generators!
   factory_bot_rails
-  firstdraft_generators!
   grade_runner!
   httparty
   jbuilder (~> 2.5)
