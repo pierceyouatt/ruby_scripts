@@ -7,7 +7,7 @@ end
 # Create a task that prints "Goodbye!"
 
 
-desc "Print today's date"
+desc "Print today's date" do
 
 end
 
