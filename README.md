@@ -52,7 +52,7 @@ Follow the usual setup steps:
     "Well, hello there, AppDev!"
     ```
 
-  1. The code to make this happen is in `lib/tasks/hello.rake` and read it and try to make out what's what.
+  1. The code to make this happen is in `lib/tasks/hello.rake`; read it and try to make out what's what.
 
 ## Tasks to write
 
