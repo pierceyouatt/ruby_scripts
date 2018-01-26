@@ -178,7 +178,7 @@ Each time `rails play_scissors` is run, a different computer move and outcome sh
 
 This task is already complete, but examine it and try to figure out what it is doing.
 
-Locate and modify `lib/input_files/example_input.txt` and then run `rails example_input_from_file` again.
+Locate `lib/input_files/example_input.txt`, modify the copy in it, and then run `rails example_input_from_file` again.
 
 ### rails word_count
 
@@ -194,6 +194,8 @@ should read the contents of `lib/input_files/word_count_text.txt` and, based on 
 "Character count (without spaces): 46"
 "Occurrences of 'story': 1"
 ```
+
+Try modifying the copy in `word_count_text.txt` and see if your program still produces the correct values.
 
 ### rails loan_payment
 
@@ -219,6 +221,8 @@ and, based on what's in them, output something like
 using the formula
 
 ![Payment formula](payment_formula.gif?raw=true "Payment formula")
+
+Try modifying the copy in `loan_payment_principal.txt` and see if your program still produces the correct values.
 
 ### rails count_and_sort
 
