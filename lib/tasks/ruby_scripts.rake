@@ -399,7 +399,18 @@ task :median do
   #    - find the number to the left of the middle number
   #    - find the number to the right of the middle number
   #    - average the left and right numbers and save it as your median
-
+  ap numbers.count
+  ap numbers.count.odd?
+  numbers = numbers.sort
+  if numbers.count.odd?
+    # we index from 0
+    median_value=numbers[numbers.count/2]
+  else
+    median_value=(numbers[numbers.count/2]+numbers[numbers.count/2+1])/2
+  end
+  ap "Sorted Numbers:"
+  ap numbers.sort
+  ap "Median: #{median_value}"
 end
 
 desc "Calculate standard deviation"
@@ -421,12 +432,28 @@ task :standard_deviation do
   #    - we find the difference between the number and the mean
   #    - we square the difference
   #  - the variance is the mean of the squared differences
-
+  running_total = 0
+  numbers.each do |current|
+    running_total += current
+  end
+  mean = running_total/numbers.count
+  sq_differences = []
+  numbers.each do |current|
+    sq_differences.push((current-mean)**2)
+  end
+  sum_of_squares = 0
+  sq_differences.each do |current|
+    sum_of_squares += current
+  end
+  variance = sum_of_squares/numbers.count
 
   # STANDARD DEVIATION
   # ==================
   # To find the standard deviation of a set,
   #  - take the square root of the variance
+  ap "Your numbers:"
+  ap numbers
+  ap "Standard Deviation: #{variance**0.5}"
 
 end
 
