@@ -1,11 +1,18 @@
 desc "Print today's date"
 task :todays_date do
-
+  ap Date.today
 end
 
 desc "Check if today is Friday"
 task :tgif do
-
+#  if Date.today.friday? == true
+#    ap "Yeah, it's Friday."
+#  end
+  if Date.today.cwday==5
+    ap "THANK GOD IT'S FRIDAY!"
+  else
+    ap "It's not Friday..."
+  end
 end
 
 desc "Print a random fortune"
@@ -17,7 +24,7 @@ task :fortune do
     "Bide your time, for success is near",
     "Every day in your life is a special occasion"
   ]
-
+  ap fortunes.sample
   # =====================================================================
   # Your code goes below.
   # =====================================================================
@@ -80,28 +87,66 @@ task :quote do
   # =====================================================================
   # Your code goes below.
   # =====================================================================
+  random_quote = quotations.sample
+  ap random_quote[:quote] + " -- " + random_quote[:citation]
 
 end
 
 desc "Play rock in rock-paper-scissors"
 task :play_rock do
   # Print the move we played
-
+  ap "We played rock."
   # Select a random move for the computer
-
+  rps_moves = ["rock", "paper", "scissors"]
+  comp_choice = rps_moves.sample
   # Print the move the computer played
-
+  ap "The computer played " + comp_choice + "."
   # Print the outcome of the game
+  if comp_choice == "rock"
+    ap "We tied."
+  elsif comp_choice == "paper"
+    ap "We lost."
+  else
+    ap "We won."
+  end
 end
 
 desc "Play paper in rock-paper-scissors"
 task :play_paper do
-
+  # Print the move we played
+  ap "We played paper."
+  # Select a random move for the computer
+  rps_moves = ["rock", "paper", "scissors"]
+  comp_choice = rps_moves.sample
+  # Print the move the computer played
+  ap "The computer played " + comp_choice + "."
+  # Print the outcome of the game
+  if comp_choice == "rock"
+    ap "We won."
+  elsif comp_choice == "paper"
+    ap "We tied."
+  else
+    ap "We lost."
+  end
 end
 
 desc "Play scissors in rock-paper-scissors"
 task :play_scissors do
-
+  # Print the move we played
+  ap "We played scissors."
+  # Select a random move for the computer
+  rps_moves = ["rock", "paper", "scissors"]
+  comp_choice = rps_moves.sample
+  # Print the move the computer played
+  ap "The computer played " + comp_choice + "."
+  # Print the outcome of the game
+  if comp_choice == "rock"
+    ap "We lost."
+  elsif comp_choice == "paper"
+    ap "We won."
+  else
+    ap "We tied."
+  end
 end
 
 desc "Print the contents of example_input.txt"
