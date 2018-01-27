@@ -167,6 +167,13 @@ desc "Calculate word count statistics"
 task :word_count do
   path_to_text = Rails.root + "lib/input_files/word_count_text.txt"
   text = open(path_to_text).read
+  ap "File input: " + text
+  ap "Character count (with spaces): #{text.length}"
+  ap "Character count (without spaces): #{text.gsub(" ","").length}"
+  def count_subs(string, substring)
+    string.scan(/(?=#{substring})/).count
+  end
+  ap "Occurences of 'beast': #{count_subs(text.downcase,"beast")}"
 
   path_to_special_word = Rails.root + "lib/input_files/word_count_special_word.txt"
   special_word = open(path_to_special_word).read
@@ -182,7 +189,14 @@ end
 
 desc "Calculate monthly loan payments"
 task :loan_payment do
-
+  apr_value = open(Rails.root + "lib/input_files/loan_payment_apr.txt").read.to_f
+  years_value = open(Rails.root + "lib/input_files/loan_payment_years.txt").read.to_f
+  principal_value = open(Rails.root + "lib/input_files/loan_payment_principal.txt").read.to_f
+  payment = (apr_value/1200*principal_value)/(1-((1+apr_value/1200)**(-12*years_value)))
+  ap "APR: #{"%.1f" % apr_value}"
+  ap "Number of Years: #{"%.0f" % years_value}"
+  ap "Principal: $#{"%.2f" % principal_value}"
+  ap "Monthly Payment: $#{"%.2f" % payment}"
 end
 
 desc "Count and sort numbers"
@@ -195,7 +209,11 @@ task :count_and_sort do
   # Your code goes below.
   # The numbers from the file are in the array `numbers`.
   # =====================================================================
-
+  ap "Your numbers:"
+  ap numbers
+  ap "Count: #{numbers.count}"
+  ap "Sorted Numbers:"
+  ap numbers.sort
 end
 
 desc "Calculate minimum"
@@ -213,6 +231,15 @@ task :minimum do
   # =======
 
   # Yes, we realize that we could just use .min, but don't; instead, practice using .each to solve this problem.
+  min = numbers.first
+  numbers.each do |chk|
+    if chk < min
+      min = chk
+    end
+  end
+    ap "Your numbers:"
+    ap numbers
+    ap "Minimum: #{min}"
 
   # To find the minimum of a list as a human:
 
@@ -236,11 +263,19 @@ task :maximum do
   # The numbers from the file are in the array `numbers`.
   # =====================================================================
 
-  # MINIMUM
+  # MAXIMUM
   # =======
 
   # Yes, we realize that we could just use .max, but don't; instead, practice using .each to solve this problem.
-
+  max = numbers.first
+  numbers.each do |chk|
+    if chk > max
+      max = chk
+    end
+  end
+    ap "Your numbers:"
+    ap numbers
+    ap "Maximum: #{max}"
   # To find the maximum of a list as a human:
 
   #  - I write down the first item in the list as the maximum (even though it may not be the real one).
@@ -270,7 +305,21 @@ task :range do
   #  - Find the maximum
   #  - Find the minimum
   #  - Subtract the latter from the former
-
+  max = numbers.first
+  numbers.each do |chk|
+    if chk > max
+      max = chk
+    end
+  end
+  min = numbers.first
+  numbers.each do |chk|
+    if chk < min
+      min = chk
+    end
+  end
+  ap "Your numbers:"
+  ap numbers
+  ap "Range: #{max - min}"
 end
 
 desc "Calculate sum"
@@ -292,7 +341,13 @@ task :sum do
   #  - for each number in the set,
   #    - we add it to the running total
   #  - after we've looked at every number, the running total is the sum
-
+  running_total = 0
+  numbers.each do |current|
+    running_total += current
+  end
+  ap "Your numbers:"
+  ap numbers
+  ap "Sum: #{running_total}"
 end
 
 desc "Calculate mean"
@@ -312,7 +367,13 @@ task :mean do
   # To find the mean (or average) of a set,
   #  - we sum up all the elements
   #  - then we divide the sum by the number of elements in the set
-
+  running_total = 0
+  numbers.each do |current|
+    running_total += current
+  end
+  ap "Your numbers:"
+  ap numbers
+  ap "Mean: #{running_total/numbers.count}"
 end
 
 desc "Calculate median"
@@ -384,7 +445,15 @@ task :mode do
   # ====
 
   # To find the mode of a set of numbers, I follow an approach similar to the one for minimum and maximum above.
-
+  mode = numbers.count(numbers.first)
+  numbers.each do |chk|
+    if numbers.count(chk) > mode
+      mode = chk
+    end
+  end
+    ap "Your numbers:"
+    ap numbers
+    ap "Mode: #{mode}"
 end
 
 desc "Scrape IMDb Coming Soon"
