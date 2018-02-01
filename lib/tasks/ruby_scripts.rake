@@ -166,7 +166,7 @@ end
 desc "Calculate word count statistics"
 task :word_count do
   path_to_text = Rails.root + "lib/input_files/word_count_text.txt"
-  text = open(path_to_text).read
+  text = open(path_to_text).read.chomp
   ap "File input: " + text
   ap "Character count (with spaces): #{text.length}"
   ap "Character count (without spaces): #{text.gsub(" ","").length}"
@@ -399,8 +399,8 @@ task :median do
   #    - find the number to the left of the middle number
   #    - find the number to the right of the middle number
   #    - average the left and right numbers and save it as your median
-  ap numbers.count
-  ap numbers.count.odd?
+  #ap numbers.count
+  #ap numbers.count.odd?
   numbers = numbers.sort
   if numbers.count.odd?
     # we index from 0
